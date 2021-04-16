@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <link rel = "stylesheet"  href = "https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+  <script type="text/javascript"> var $SCRIPT_ROOT = 52.27.229.48:5000" </script>
+  
+  <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
+</head>
+<body class="background3">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="{{ url_for('static', filename='table.js') }}"></script>
+<br>
+<div class="babybox">
+<p class="userid">Logged In: {{username}} </p><br>
+<p class="userid1">Not You? <a href="{{url_for('login')}}">Logout</a></p>
+</div>
+<br>
+<div class="boxy2">
+<h1 class="task">Welcome to Your Planner!</h1>
+<br>
+<h1 class="task">Date For Task List: {{viewdate}}</h1>
+</div>
+<form id="form" method="post">
+<table id="table">
+  <thead>
+    <br>
+    <tr class="list">
+          <th class="list"> <div class="smallbtn"><button type="submit" name="Delete">Delete &#128503;</button>&nbsp;&nbsp;&nbsp;<button type="submit" name="Completed">Complete &#10003;</button>&nbsp;&nbsp;&nbsp;<button type="submit"  action="{{url_for('AddTask')}}" name="Add">Add Task &#43;</button>&nbsp;&nbsp;&nbsp;<button type="submit" name="Show">Read Task&#128083;</button></div> Task</th>
+	  <th class="list">Priority</th>
+	  <th class="list">Due Date</th>
+          <th class="list">Category</th>
+     </tr>
+</thead>
+<thbody>
+  
+  {% for task in tasks %}
+  <tr>
+          <td><input type="checkbox" name="identifier" value="{{task.taskNum}}">{{task.task}}</td>
+          <td>{{task.priority}}</td>
+	  
+	  <td>{{task.duedate}}</td>
+          <td>{{task.category}}</td>
+     </tr>
+     {% endfor %}
+</thbody>
+</table>
+
+<tr>
+   <th><button type="submit"  class="tasklist" name="CompleteList">View Completed Tasks</button></th>
+</tr>
+<br>
+<div class="centered">
+  <br><br><br><br><br><br><br><br>
+  <div class="boxy12">
+    <p> Choose Task List Date:</p>
+<input id="date" type="date" name="datepick">
+<br>
+<br>
+<button type="submit"  class="tasklist12"  name="submitDate">Go To TaskList</button>
+</div>
+</div>
+								   </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+<link rel = 'stylesheet'  href = "{{ url_for('static', filename='index.css') }}" />
+</head>
+<html>
+  <body class="background1">
+    <div class="box3">
+
+<form id="fogrm" method="post">  
+      <h1>New User Registration</h1>
+
+  <p class="Register"><b>New Username</b></p>   <input type="text" placeholder="Enter Desired Username" class="Register" name="newuserid" />
+      <p class="Register"><b>New Password</b></p> <input type="password" placeholder="Enter Desired Password" class="Register" name="newpassword" />
+      <p class="Register"><b>Retype Password</b> </p><input type="password" placeholder="Enter Password Again" class="Register"  name="verifypassword" /> 
+  
+  <button type="submit" class="register" name="Register">Register</button><button type="submit" class="register" name="Login">Back To Login</button>
+    </div>
+
+    {% if error==2 %}
+    <div class="box2">
+      <p class="login">Passwords do not match. Please try again.</p>
+    </div>
+    {% endif %}
+    {% if error==1 %}
+    <div class="box2">
+      <p class="login">Username is already taken. Please try again.</p>
+    </div>
+    {% endif %}
+    </form>
+</body>
+</html>

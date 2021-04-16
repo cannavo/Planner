@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <link rel = "stylesheet"  href = "https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+  <script type="text/javascript"> var $SCRIPT_ROOT = 52.27.229.48:5000" </script>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
+
+</head>
+<body class="background2">
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="{{ url_for('static', filename='table.js') }}"></script>
+<br>
+<h1 class="task">Completed Tasks</h1>
+<br>
+ <form id="form" method="post">
+<table id="table">
+  <thead>
+    <br>
+     <tr class="list">
+          <th class="list">Task</th>
+          <th class="list">Due Date</th>
+	  <th class="list">Description</th>
+          <th class="list">Category</th>
+     </tr>
+</thead>
+<thbody>
+  
+  {% for task in tasks %}
+  <tr>
+          <td><input type="checkbox" name="identifier" value="{{task.taskNum}}" onclick="return false;" checked> {{task.task}} <button type="submit" name="Delete">&#128503 </button> <button type="submit" name="Show">&#128083 </button></td>
+          <td>{{task.duedate}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.category}}</td>
+     </tr>
+     {% endfor %}
+</thbody>
+</table>
+
+<tr>
+  <th><button type="submit"  class="tasklist" name="Back">Back To Task List</button></th>
+</tr>
+
+</form>
+</body>
+</html>
